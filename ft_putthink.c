@@ -36,11 +36,21 @@ int ft_putstr(char *s)
 		write(1, "(null)", 6);
 		return (6);
 	}
-    while (i < strlen(s))
+    while (i < ft_strlen(s))
     {
         write(1, &s[i], 1);
         i++;
     }
+	return (i);
+}
+
+int	ft_strlen(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+		i++;
 	return (i);
 }
 
