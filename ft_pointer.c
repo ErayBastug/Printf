@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthexa.c                                       :+:      :+:    :+:   */
+/*   ft_pointer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erbastug <erbastug@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/08 22:18:42 by erbastug          #+#    #+#             */
-/*   Updated: 2024/12/08 22:19:45 by erbastug         ###   ########.fr       */
+/*   Created: 2024/12/08 22:08:10 by erbastug          #+#    #+#             */
+/*   Updated: 2024/12/08 22:11:11 by erbastug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_puthex(unsigned int num, char format)
+void	ft_putpointer(unsigned long num)
 {
 	if (num == 0)
-		return (write(1, "0", 1));
+	{
+		write(1, "0", 1);
+		return ;
+	}
 	if (num >= 16)
 	{
-		ft_puthex(num / 16, format);
-		ft_puthex(num % 16, format);
+		ft_putpointer(num / 16);
+		ft_putpointer(num % 16);
 	}
 	else
 	{
@@ -27,16 +30,38 @@ int	ft_puthex(unsigned int num, char format)
 			ft_putchar(num + '0');
 		else
 		{
-			if (format == 'x')
-				ft_putchar(num - 10 + 'a');
-			if (format == 'X')
-				ft_putchar(num - 10 + 'A');
+			ft_putchar(num - 10 + 'a');
 		}
 	}
-	return (ft_hex_len(num));
 }
 
-int	ft_hex_len(unsigned int num)
+int	ft_pointer(void *p)
+{
+	unsigned long	num;
+	int				a;
+
+	a = 0;
+	num = (unsigned long)p;
+	if (num == 0)
+	{
+		if (write(1, "(nil)", 5) == -1)
+			return (-1);
+		return (5);
+	}
+	a += write(1, "0x", 2);
+	if (a == -1)
+		return (-1);
+	if (num == 0)
+		a += ft_putchar('0');
+	else
+	{
+		ft_putpointer(num);
+		a += ft_pointer_len(num);
+	}
+	return (a);
+}
+
+int	ft_pointer_len(unsigned long num)
 {
 	int	a;
 
@@ -46,29 +71,6 @@ int	ft_hex_len(unsigned int num)
 	while (num != 0)
 	{
 		num = num / 16;
-		a++;
-	}
-	return (a);
-}
-
-int	ft_unsigned(unsigned int num)
-{
-	if (num >= 10)
-		ft_unsigned(num / 10);
-	ft_putchar((num % 10) + '0');
-	return (ft_unsigned_len(num));
-}
-
-int	ft_unsigned_len(unsigned int num)
-{
-	int	a;
-
-	a = 0;
-	if (num == 0)
-		return (1);
-	while (num != 0)
-	{
-		num = num / 10;
 		a++;
 	}
 	return (a);

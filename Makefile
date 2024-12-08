@@ -1,7 +1,6 @@
-SRCS = ft_printf.c ft_puthexa.c //
-		ft_putthink.c
+SRCS = ft_printf.c ft_puthexa.c ft_putthink.c ft_pointer.c
 OBJ = ${SRCS:.c=.o}
-NAME = printf.a
+NAME = libftprintf.a
 
 ${NAME}: ${OBJ}
 	ar rc $(NAME) $(OBJ)
@@ -16,4 +15,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all, clean, fclean, re
+.PHONY: all clean fclean re
