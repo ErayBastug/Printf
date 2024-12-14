@@ -6,7 +6,7 @@
 /*   By: erbastug <erbastug@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 22:19:57 by erbastug          #+#    #+#             */
-/*   Updated: 2024/12/08 22:22:33 by erbastug         ###   ########.fr       */
+/*   Updated: 2024/12/14 16:47:22 by erbastug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,27 @@
 
 int	ft_putnbr(int n)
 {
-	int		b;
-	char	a;
+	int	a;
 
-	b = 0;
+	a = 0;
 	if (n == -2147483648)
-		b += (write(1, &"-2147483648", 11));
-	else if (n < 0)
+		return (write(1, "-2147483648", 11));
+	if (n < 0)
 	{
-		b += (write(1, "-", 1));
-		n = n * -1;
-		b += ft_putnbr(n);
+		if (ft_putchar('-') == -1)
+			return (-1);
+		return (1 + ft_putnbr(-n));
 	}
-	else if (n > 9)
+	if (n > 9)
 	{
-		b += ft_putnbr(n / 10);
-		a = (n % 10) + '0';
-		b += (write(1, &a, 1));
+		a = ft_putnbr(n / 10);
+		if (a == -1)
+			return (-1);
+		if (ft_putchar((n % 10) + '0') == -1)
+			return (-1);
+		return (a + 1);
 	}
-	else
-	{
-		a = n + 48;
-		b += (write(1, &a, 1));
-	}
-	return (b);
+	return (ft_putchar(n + '0'));
 }
 
 int	ft_putstr(char *s)
@@ -47,29 +44,23 @@ int	ft_putstr(char *s)
 	i = 0;
 	if (s == NULL)
 	{
-		write(1, "(null)", 6);
+		i = write(1, "(null)", 6);
+		if (i == -1)
+			return (-1);
 		return (6);
 	}
-	while (i < ft_strlen(s))
+	while (s[i])
 	{
-		write(1, &s[i], 1);
+		if (ft_putchar(s[i]) == -1)
+			return (-1);
 		i++;
 	}
-	return (i);
-}
-
-int	ft_strlen(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
 	return (i);
 }
 
 int	ft_putchar(int c)
 {
-	write(1, &c, 1);
+	if (write(1, &c, 1) == -1)
+		return (-1);
 	return (1);
 }

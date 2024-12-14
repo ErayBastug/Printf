@@ -6,17 +6,16 @@
 /*   By: erbastug <erbastug@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 22:12:54 by erbastug          #+#    #+#             */
-/*   Updated: 2024/12/08 22:14:31 by erbastug         ###   ########.fr       */
+/*   Updated: 2024/12/14 16:18:13 by erbastug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "ft_printf.h"
 
 int	ft_flag_check(va_list args, char c)
 {
 	if (c == 'c')
-		return (ft_putchar((char )va_arg(args, int)));
+		return (ft_putchar(va_arg(args, int)));
 	else if (c == 's')
 		return (ft_putstr(va_arg(args, char *)));
 	else if (c == 'p')
@@ -29,29 +28,52 @@ int	ft_flag_check(va_list args, char c)
 		return (ft_puthex(va_arg(args, unsigned int), c));
 	else if (c == '%')
 		return (ft_putchar('%'));
-	return (0);
+	else
+		return (-1);
+}
+
+int	ft_check(va_list args, const char *str)
+{
+	int	leng;
+	int	total_leng;
+	int	i;
+
+	i = -1;
+	total_leng = 0;
+	while (str[++i] != '\0')
+	{
+		if (str[i] == '%')
+		{
+			if (str[i + 1] == '\0')
+				return (-1);
+			leng = ft_flag_check(args, str[++i]);
+			if (leng == -1)
+				return (-1);
+			total_leng += leng;
+		}
+		else
+		{
+			if (ft_putchar(str[i]) == -1)
+				return (-1);
+			total_leng++;
+		}
+	}
+	return (total_leng);
 }
 
 int	ft_printf(const char *str, ...)
 {
 	va_list	args;
 	int		i;
-	int		a;
 
 	i = 0;
-	a = 0;
 	va_start(args, str);
-	while (str[i])
+	i = ft_check(args, str);
+	if (i == -1)
 	{
-		if (str[i] == '%')
-		{
-			a += ft_flag_check(args, str[i + 1]);
-			i++;
-		}
-		else
-			a += ft_putchar(str[i]);
-		i++;
+		va_end(args);
+		return (-1);
 	}
 	va_end(args);
-	return (a);
+	return (i);
 }

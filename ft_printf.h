@@ -6,7 +6,7 @@
 /*   By: erbastug <erbastug@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 22:14:49 by erbastug          #+#    #+#             */
-/*   Updated: 2024/12/08 22:18:31 by erbastug         ###   ########.fr       */
+/*   Updated: 2024/12/14 16:05:52 by erbastug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FT_PRINTF_H
 # include <unistd.h>
 # include <stdarg.h>
-# include <stdint.h>
 
 int		ft_flag_check(va_list args, char c);
 int		ft_printf(const char *str, ...);
@@ -28,5 +27,6 @@ int		ft_strlen(char *s);
 int		ft_putchar(int c);
 void	ft_putpointer(unsigned long num);
 int		ft_pointer(void *p);
+int		ft_check(va_list args, const char *str);
 int		ft_pointer_len(unsigned long num);
 #endif

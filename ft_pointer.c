@@ -6,7 +6,7 @@
 /*   By: erbastug <erbastug@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 22:08:10 by erbastug          #+#    #+#             */
-/*   Updated: 2024/12/08 22:11:11 by erbastug         ###   ########.fr       */
+/*   Updated: 2024/12/14 14:19:15 by erbastug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 
 void	ft_putpointer(unsigned long num)
 {
-	if (num == 0)
-	{
-		write(1, "0", 1);
-		return ;
-	}
 	if (num >= 16)
 	{
 		ft_putpointer(num / 16);
@@ -27,10 +22,14 @@ void	ft_putpointer(unsigned long num)
 	else
 	{
 		if (num <= 9)
-			ft_putchar(num + '0');
+		{
+			if (ft_putchar(num + '0') == -1)
+				return ;
+		}
 		else
 		{
-			ft_putchar(num - 10 + 'a');
+			if (ft_putchar(num - 10 + 'a') == -1)
+				return ;
 		}
 	}
 }
@@ -51,13 +50,8 @@ int	ft_pointer(void *p)
 	a += write(1, "0x", 2);
 	if (a == -1)
 		return (-1);
-	if (num == 0)
-		a += ft_putchar('0');
-	else
-	{
-		ft_putpointer(num);
-		a += ft_pointer_len(num);
-	}
+	ft_putpointer(num);
+	a += ft_pointer_len(num);
 	return (a);
 }
 
@@ -66,8 +60,6 @@ int	ft_pointer_len(unsigned long num)
 	int	a;
 
 	a = 0;
-	if (num == 0)
-		return (1);
 	while (num != 0)
 	{
 		num = num / 16;
