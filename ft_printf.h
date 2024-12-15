@@ -6,7 +6,7 @@
 /*   By: erbastug <erbastug@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 22:14:49 by erbastug          #+#    #+#             */
-/*   Updated: 2024/12/14 16:05:52 by erbastug         ###   ########.fr       */
+/*   Updated: 2024/12/15 01:21:43 by erbastug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		ft_putnbr(int n);
 int		ft_putstr(char *s);
 int		ft_strlen(char *s);
 int		ft_putchar(int c);
-void	ft_putpointer(unsigned long num);
+int		ft_putpointer(unsigned long num);
 int		ft_pointer(void *p);
 int		ft_check(va_list args, const char *str);
 int		ft_pointer_len(unsigned long num);

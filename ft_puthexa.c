@@ -6,7 +6,7 @@
 /*   By: erbastug <erbastug@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 22:18:42 by erbastug          #+#    #+#             */
-/*   Updated: 2024/12/14 16:49:01 by erbastug         ###   ########.fr       */
+/*   Updated: 2024/12/15 03:13:09 by erbastug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,21 @@ int	ft_puthex(unsigned int num, char format)
 		return (write(1, "0", 1));
 	if (num >= 16)
 	{
-		ft_puthex(num / 16, format);
-		ft_puthex(num % 16, format);
+		if (ft_puthex(num / 16, format) == -1
+			|| ft_puthex(num % 16, format) == -1)
+			return (-1);
 	}
 	else
 	{
 		if (num <= 9)
-			ft_putchar(num + '0');
+		{
+			if (ft_putchar(num + '0') == -1)
+				return (-1);
+		}
 		else
 		{
-			if (format == 'x')
-				if (ft_putchar(num - 10 + 'a') == -1)
-					return (-1);
+			if (format == 'x' && (ft_putchar(num - 10 + 'a') == -1))
+				return (-1);
 			if (format == 'X')
 				if (ft_putchar(num - 10 + 'A') == -1)
 					return (-1);

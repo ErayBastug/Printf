@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void	ft_putpointer(unsigned long num)
+int	ft_putpointer(unsigned long num)
 {
 	if (num >= 16)
 	{
@@ -24,14 +24,15 @@ void	ft_putpointer(unsigned long num)
 		if (num <= 9)
 		{
 			if (ft_putchar(num + '0') == -1)
-				return ;
+				return (-1);
 		}
 		else
 		{
 			if (ft_putchar(num - 10 + 'a') == -1)
-				return ;
+				return (-1);
 		}
 	}
+	return (0);
 }
 
 int	ft_pointer(void *p)
@@ -50,7 +51,8 @@ int	ft_pointer(void *p)
 	a += write(1, "0x", 2);
 	if (a == -1)
 		return (-1);
-	ft_putpointer(num);
+	if (ft_putpointer(num) == -1)
+		return (-1);
 	a += ft_pointer_len(num);
 	return (a);
 }
