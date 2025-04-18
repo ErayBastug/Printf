@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erbastug <erbastug@student.42kocaeli.co    +#+  +:+       +#+        */
+/*   By: erbastug <erbastug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/08 22:14:49 by erbastug          #+#    #+#             */
-/*   Updated: 2024/12/15 01:21:43 by erbastug         ###   ########.fr       */
+/*   Created: 2024/12/17 12:44:03 by erbastug          #+#    #+#             */
+/*   Updated: 2024/12/17 22:34:30 by erbastug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int		ft_unsigned(unsigned int num);
 int		ft_unsigned_len(unsigned int num);
 int		ft_putnbr(int n);
 int		ft_putstr(char *s);
-int		ft_strlen(char *s);
 int		ft_putchar(int c);
 int		ft_putpointer(unsigned long num);
 int		ft_pointer(void *p);
