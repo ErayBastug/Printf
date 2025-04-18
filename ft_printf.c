@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erbastug <erbastug@student.42kocaeli.co    +#+  +:+       +#+        */
+/*   By: erbastug <erbastug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/08 22:12:54 by erbastug          #+#    #+#             */
-/*   Updated: 2024/12/15 03:00:48 by erbastug         ###   ########.fr       */
+/*   Created: 2024/12/17 12:43:34 by erbastug          #+#    #+#             */
+/*   Updated: 2024/12/17 22:23:23 by erbastug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,10 @@ int	ft_printf(const char *str, ...)
 	int		i;
 
 	i = 0;
+	if (str == NULL)
+		return (-1);
 	va_start(args, str);
 	i = ft_check(args, str);
-	if (i == -1)
-	{
-		va_end(args);
-		return (-1);
-	}
 	va_end(args);
 	return (i);
 }
