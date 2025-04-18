@@ -1,11 +1,14 @@
-SRCS = ft_printf.c ft_puthexa.c ft_putthink.c ft_pointer.c
-OBJ = ${SRCS:.c=.o}
 NAME = libftprintf.a
+CFLAGS = -Wall -Wextra -Werror
+
+SRCS = ft_printf.c ft_puthexa.c ft_putthink.c ft_pointer.c
+
+OBJ = ${SRCS:.c=.o}
+
+all: $(NAME)
 
 ${NAME}: ${OBJ}
 	ar rc $(NAME) $(OBJ)
-
-all: $(NAME)
 
 clean:
 	rm -f $(OBJ)
