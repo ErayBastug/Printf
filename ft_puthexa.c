@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_puthexa.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erbastug <erbastug@student.42kocaeli.co    +#+  +:+       +#+        */
+/*   By: erbastug <erbastug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/08 22:18:42 by erbastug          #+#    #+#             */
-/*   Updated: 2024/12/15 03:13:09 by erbastug         ###   ########.fr       */
+/*   Created: 2024/12/17 12:44:12 by erbastug          #+#    #+#             */
+/*   Updated: 2024/12/17 22:33:38 by erbastug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,8 @@ int	ft_puthex(unsigned int num, char format)
 		{
 			if (format == 'x' && (ft_putchar(num - 10 + 'a') == -1))
 				return (-1);
-			if (format == 'X')
-				if (ft_putchar(num - 10 + 'A') == -1)
-					return (-1);
+			if (format == 'X' && (ft_putchar(num - 10 + 'A') == -1))
+				return (-1);
 		}
 	}
 	return (ft_hex_len(num));
