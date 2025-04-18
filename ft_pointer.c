@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pointer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erbastug <erbastug@student.42kocaeli.co    +#+  +:+       +#+        */
+/*   By: erbastug <erbastug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/08 22:08:10 by erbastug          #+#    #+#             */
-/*   Updated: 2024/12/14 14:19:15 by erbastug         ###   ########.fr       */
+/*   Created: 2024/12/17 12:43:51 by erbastug          #+#    #+#             */
+/*   Updated: 2024/12/17 22:33:30 by erbastug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ int	ft_putpointer(unsigned long num)
 {
 	if (num >= 16)
 	{
-		ft_putpointer(num / 16);
-		ft_putpointer(num % 16);
+		if (ft_putpointer(num / 16) == -1
+			|| ft_putpointer(num % 16) == -1)
+			return (-1);
 	}
 	else
 	{
