@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putthink.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erbastug <erbastug@student.42kocaeli.co    +#+  +:+       +#+        */
+/*   By: erbastug <erbastug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/08 22:19:57 by erbastug          #+#    #+#             */
-/*   Updated: 2024/12/14 16:47:22 by erbastug         ###   ########.fr       */
+/*   Created: 2024/12/17 12:44:22 by erbastug          #+#    #+#             */
+/*   Updated: 2024/12/17 12:44:24 by erbastug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
